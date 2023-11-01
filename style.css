@@ -11,6 +11,16 @@ body {
   justify-content: center;
   background: linear-gradient(90deg, #0c164d 0%, #190b22 100%);
   align-items: center;
+  overflow: hidden;
+}
+
+.star {
+  background-color: white;
+  width: 2px;
+  height: 2px;
+  position: absolute;
+  z-index: -1;
+  filter: blur(1px);
 }
 
 #modal {
@@ -23,18 +33,65 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10rem;
-  grid-template-columns: repeat(1, 1fr);
 }
 
 #modalInfo {
-  padding: 1rem;
+  grid-template-columns: repeat(2, fit-content(10px), max(20rem), 1fr);
+  grid-template-rows: repeat(5, auto-fit, 1fr);
+  padding: 0rem;
   display: grid;
   max-width: 40vw;
   background-color: white;
   /* align-self: center; */
   position: absolute;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+}
 
-  /* columns: 2; */
+#modalInfo > * {
+  padding: 0.7rem;
+}
+
+#planetName {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#latinName {
+  grid-column: 1;
+  grid-row: 1;
+  margin-top: 3rem;
+}
+
+#desc {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 2;
+}
+
+.circ {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.dist {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.dayTemp {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.nightTemp {
+  grid-column: 2;
+  grid-row: 4;
+}
+
+.moons {
+  grid-column: 1;
+  grid-row: 5;
 }
 
 .solarsysLogo {
@@ -75,11 +132,12 @@ body {
 }
 
 .solen {
-  height: 35rem;
-  width: 35rem;
-  background-color: yellow;
+  height: 38rem;
+  width: 38rem;
+  background-color: rgb(255, 225, 0);
   border-radius: 100%;
-  margin-left: -27rem;
+  margin-left: -30rem;
+  box-shadow: yellow 0 0 100000px 15px;
 }
 
 .merkurius {

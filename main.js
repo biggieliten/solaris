@@ -1,23 +1,37 @@
+const starContainer = document.querySelector(".stars");
+
+function stars() {
+  for (let i = 0; i < 400; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.size;
+
+    starContainer.appendChild(star);
+  }
+}
+
+stars();
+
 function popUp(planet) {
   const popupModal = document.getElementById("modal");
-  document.getElementById("planetName").textContent = `Namn: ${planet.name}`;
-  document.getElementById(
-    "latinName"
-  ).textContent = `latin: ${planet.latinName}`;
-  document.getElementById("desc").textContent = `desc: ${planet.desc}`;
-  document.getElementById("circ").textContent = `circ: ${
-    planet.circumference + "Km"
+  document.getElementById("planetName").textContent = `${planet.name}`;
+  document.getElementById("latinName").textContent = `${planet.latinName}`;
+  document.getElementById("desc").textContent = ` ${planet.desc}`;
+  document.getElementById("circ").textContent = ` ${
+    planet.circumference + " km"
   }`;
-  document.getElementById("distance").textContent = `dist: ${planet.distance}`;
-  document.getElementById(
-    "dayTemp"
-  ).textContent = `daytemp: ${planet.temp.day}`;
-  document.getElementById(
-    "nightTemp"
-  ).textContent = `nighttemp: ${planet.temp.night}`;
-  document.getElementById("moons").textContent = `moons: ${planet.moons.join(
-    ", "
-  )}`;
+  document.getElementById("distance").textContent = `${
+    planet.distance + " km"
+  }`;
+  document.getElementById("dayTemp").textContent = `	 ${
+    planet.temp.day + " °C"
+  }`;
+  document.getElementById("nightTemp").textContent = `${
+    planet.temp.night + " °C"
+  }`;
+  document.getElementById("moons").textContent = `${planet.moons.join(", ")}`;
 
   popupModal.style.display = "block";
   popupModal.style.display = "flex";
@@ -46,7 +60,6 @@ const createPlanets = async (apiURL) => {
       const planetElement = document.createElement("div");
       planetElement.classList.add(planet.name.toLowerCase());
 
-      //   planetElement.addEventListener("click", () => callPopup(planet));
       planetElement.addEventListener("click", () => popUp(planet));
 
       planetDiv.append(planetElement);
