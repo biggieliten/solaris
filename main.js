@@ -1,3 +1,32 @@
+const API_URL = "https://majazocom.github.io/Data/solaris.json";
+
+const createPlanets = async (apiURL) => {
+  try {
+    const response = await fetch(apiURL);
+
+    if (!response.ok) {
+      throw new Error("Error fetching data");
+    }
+
+    data = await response.json(); // Tilldela datan till den globala variabeln
+
+    data.forEach((planet) => {
+      const planetElement = document.createElement("div");
+      planetElement.classList.add(planet.name.toLowerCase());
+
+      planetElement.addEventListener("click", () => popUp(planet));
+
+      planetDiv.append(planetElement);
+    });
+
+    return data;
+  } catch (error) {
+    console.error("Fel:", error);
+  }
+};
+
+let data = createPlanets(API_URL);
+
 const starContainer = document.querySelector(".stars");
 
 function stars() {
@@ -37,42 +66,6 @@ function popUp(planet) {
   popupModal.style.display = "flex";
 }
 
-// function callPopup(planet) {
-//   popUp(planet);
-//   console.log(data);
-// }
-
 const planetDiv = document.querySelector(".planets");
 
-const API_URL = "https://majazocom.github.io/Data/solaris.json";
-
-const createPlanets = async (apiURL) => {
-  try {
-    const response = await fetch(apiURL);
-
-    if (!response.ok) {
-      throw new Error("Error fetching data");
-    }
-
-    data = await response.json(); // Tilldela datan till den globala variabeln
-
-    data.forEach((planet) => {
-      const planetElement = document.createElement("div");
-      planetElement.classList.add(planet.name.toLowerCase());
-
-      planetElement.addEventListener("click", () => popUp(planet));
-
-      planetDiv.append(planetElement);
-    });
-
-    return data;
-  } catch (error) {
-    console.error("Fel:", error);
-  }
-};
-
-let data = createPlanets(API_URL);
-
 const onClick = document.querySelectorAll(".planets div");
-
-console.log(data);
