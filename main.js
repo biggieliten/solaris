@@ -32,6 +32,29 @@ const createPlanets = async (apiURL) => {
 };
 let data = createPlanets(API_URL);
 
+// Här är funktionen där vi plockar fram all info från apin samt hämtar elementen från HTML med "getElementById". Vi lägger till datan från apiet genom att ta ".textcontent" = "planet.property". Alltså har vi i funktionen createPlanets kört foorloopen " data.forEach((planet) ", där i har plockat hem alla planeter och där vi kallar objecten "planets". Där med tar vi te.x "planet.latinName" för att få fram alla specifika latinNames.
+function popUp(planet) {
+  document.getElementById("planetName").textContent = `${planet.name}`;
+  document.getElementById("latinName").textContent = `${planet.latinName}`;
+  document.getElementById("desc").textContent = ` ${planet.desc}`;
+  document.getElementById("circ").textContent = ` ${
+    planet.circumference.toLocaleString("sv-SE") + " km"
+  }`;
+  document.getElementById("distance").textContent = `${
+    planet.distance.toLocaleString("sv-SE") + " km"
+  }`;
+  document.getElementById("dayTemp").textContent = `	 ${
+    planet.temp.day + " °C"
+  }`;
+  document.getElementById("nightTemp").textContent = `${
+    planet.temp.night + " °C"
+  }`;
+  document.getElementById("moons").textContent = `${planet.moons.join(", ")}`;
+
+  popupModal.style.display = "block";
+  popupModal.style.display = "flex";
+}
+
 // Nedan har vi en funktion som skall stänga ner själva modalen som kommer kommer upp när man klickar på en planet.
 closeModal.addEventListener("click", () => closePopupModal);
 
@@ -52,26 +75,3 @@ function stars() {
   }
 }
 stars();
-
-// Här är funktionen där vi plockar fram all info från apin samt hämtar elementen från HTML med "getElementById". Vi lägger till datan från apiet genom att ta ".textcontent" = "planet.property". Alltså har vi i funktionen createPlanets kört foorloopen " data.forEach((planet) ", där i har plockat hem alla planeter och där vi kallar objecten "planets". Där med tar vi te.x "planet.latinName" för att få fram alla specifika latinNames.
-function popUp(planet) {
-  document.getElementById("planetName").textContent = `${planet.name}`;
-  document.getElementById("latinName").textContent = `${planet.latinName}`;
-  document.getElementById("desc").textContent = ` ${planet.desc}`;
-  document.getElementById("circ").textContent = ` ${
-    planet.circumference + " km"
-  }`;
-  document.getElementById("distance").textContent = `${
-    planet.distance + " km"
-  }`;
-  document.getElementById("dayTemp").textContent = `	 ${
-    planet.temp.day + " °C"
-  }`;
-  document.getElementById("nightTemp").textContent = `${
-    planet.temp.night + " °C"
-  }`;
-  document.getElementById("moons").textContent = `${planet.moons.join(", ")}`;
-
-  popupModal.style.display = "block";
-  popupModal.style.display = "flex";
-}
