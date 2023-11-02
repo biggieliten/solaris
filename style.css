@@ -45,21 +45,32 @@ body {
   grid-template-columns: repeat(2, auto-fit, 1fr);
   grid-template-rows: repeat(5, max-content fit-content(10vh), 1fr);
   display: grid;
-
+  max-height: 85vh;
   max-width: 40vw;
-  background-color: white;
   /* align-self: center; */
   position: absolute;
   color: white;
   background-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: auto;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.5rem;
 }
 
 #modalInfo > * {
   padding: 1.5rem;
+  /* border: 1px white solid; */
 }
 
 #planetName {
-  grid-column: 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
   grid-row: 1;
   font-family: "Lora", serif;
   font-family: "Secular One", sans-serif;
@@ -70,7 +81,8 @@ body {
 }
 
 #latinName {
-  grid-column: 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
   grid-row: 1;
   margin-top: 4.5rem;
   color: #ffd029;
@@ -85,17 +97,54 @@ body {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row: 2;
-  width: 40rem;
-  border-bottom: 1px rgba(255, 255, 255, 0.3) solid;
   color: #fff;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 300;
   font-size: 1.125rem;
   font-style: normal;
   line-height: 170%;
+  flex-wrap: wrap;
+  max-width: 40vw;
+}
+
+.closeModal {
+  color: white;
+  right: 0;
+  top: 0;
+  margin: 1.5rem;
+  position: absolute;
+  cursor: pointer;
+  width: 0.5rem;
+  height: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+}
+/* .closeModal:hover{
+	
+	box-shadow: white 10px 10px 10px 0px;
+} */
+
+.description::-webkit-scrollbar {
+  width: 1px;
+}
+
+.description::-webkit-scrollbar-thumb {
+  width: 1px;
+}
+
+#modalInfo::-webkit-scrollbar {
+  width: 1px;
+}
+
+#modalInfo::-webkit-scrollbar-thumb {
+  width: 1px;
 }
 
 .circ {
+  border-top: 1px rgba(255, 255, 255, 0.3) solid;
   grid-column: 1;
   grid-row: 3;
 }
@@ -112,7 +161,7 @@ body {
 .nightTemp,
 .moons p {
   font-family: Roboto Condensed;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 300;
   line-height: 170%; /* 1.9125rem */
@@ -120,6 +169,8 @@ body {
 }
 
 .dist {
+  border-top: 1px rgba(255, 255, 255, 0.3) solid;
+
   grid-column: 2;
   grid-row: 3;
 }
@@ -134,8 +185,9 @@ body {
   grid-column: 1;
   grid-row: 4;
   border-bottom: 1px rgba(255, 255, 255, 0.3) solid;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+
+  /* margin-top: 1rem;
+  margin-bottom: 1rem; */
 }
 .dayTemp h3 {
   font-family: "Secular One", sans-serif;
@@ -147,8 +199,8 @@ body {
   grid-column: 2;
   grid-row: 4;
   border-bottom: 1px rgba(255, 255, 255, 0.3) solid;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  /* margin-top: 1rem;
+  margin-bottom: 1rem; */
 }
 
 .nightTemp h3 {
@@ -158,7 +210,8 @@ body {
 }
 
 .moons {
-  grid-column: 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
   grid-row: 5;
 }
 
@@ -196,6 +249,15 @@ body {
   flex-wrap: wrap;
 }
 
+.planets > * {
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+.planets > *:hover {
+  box-shadow: rgb(255, 255, 255) 0px 0px 20px 1px;
+}
+
 .blueSun {
   height: 48rem;
   width: 48rem;
@@ -203,7 +265,8 @@ body {
   border-radius: 100%;
   left: -39rem;
   position: absolute;
-  box-shadow: #428dd4 0px 0px 250px 0px;
+  box-shadow: rgba(66, 142, 212, 0.1) 0px 0px 0px 35px,
+    rgba(66, 142, 212, 0.06) 0px 0px 0px 70px;
 }
 
 .solen {
@@ -212,7 +275,7 @@ body {
   background-color: #ffd029;
   border-radius: 100%;
   margin-left: -39rem;
-  box-shadow: #ffd029 0px 0px 250px 0px;
+  box-shadow: #ffd029 0px 0px 100px 0px;
 }
 
 .merkurius {
