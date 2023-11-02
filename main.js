@@ -20,7 +20,7 @@ const createPlanets = async (apiURL) => {
       const planetElement = document.createElement("div");
       planetElement.classList.add(planet.name.toLowerCase());
 
-      planetElement.addEventListener("click", () => popUp(planet));
+      planetElement.addEventListener("click", () => showModal(planet));
 
       planetDiv.append(planetElement);
     });
@@ -33,7 +33,7 @@ const createPlanets = async (apiURL) => {
 let data = createPlanets(API_URL);
 
 // Här är funktionen där vi plockar fram all info från apin samt hämtar elementen från HTML med "getElementById". Vi lägger till datan från apiet genom att ta ".textcontent" = "planet.property". Alltså har vi i funktionen createPlanets kört foorloopen " data.forEach((planet) ", där i har plockat hem alla planeter och där vi kallar objecten "planets". Där med tar vi te.x "planet.latinName" för att få fram alla specifika latinNames.
-function popUp(planet) {
+function showModal(planet) {
   document.getElementById("planetName").textContent = `${planet.name}`;
   document.getElementById("latinName").textContent = `${planet.latinName}`;
   document.getElementById("desc").textContent = ` ${planet.desc}`;
