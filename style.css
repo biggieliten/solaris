@@ -64,6 +64,7 @@ body {
 
 #modalInfo:hover {
   box-shadow: #3a3655 0 0 4.375rem 1.125rem;
+  transition: box-shadow 0.3s;
 }
 
 #modalInfo > * {
@@ -124,22 +125,6 @@ body {
   background-color: rgba(255, 255, 255, 0);
   border-radius: 100%;
 }
-
-/* .description::-webkit-scrollbar {
-  width: 10px;
-}
-
-.description::-webkit-scrollbar-thumb {
-  width: 10px;
-}
-
-#modalInfo::-webkit-scrollbar {
-  width: 10px;
-}
-
-#modalInfo::-webkit-scrollbar-thumb {
-  width: 10	px;
-} */
 
 .circ {
   border-top: 0.063rem rgba(255, 255, 255, 0.3) solid;
